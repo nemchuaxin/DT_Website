@@ -1,23 +1,47 @@
 const express = require('express');
+const mysql = require('mysql2');  // Thay vì mysql
 const bodyParser = require('body-parser');
+
 const app = express();
 const port = 3000;
 
-// Middleware để phân tích dữ liệu JSON
+// Middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Route để xử lý yêu cầu POST tới /order
-app.post('/order', (req, res) => {
-    const orderData = req.body;
-    console.log('Received order:', orderData);
-
-    // Xử lý dữ liệu đơn hàng tại đây (ví dụ: lưu trữ vào cơ sở dữ liệu)
-    // ...
-
-    res.status(200).json({ message: 'Order received successfully' });
+// Cấu hình kết nối cơ sở dữ liệu
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Thien13041304@@',
+    database: 'product_orders'
 });
 
-// Bắt đầu server
+// Kết nối đến cơ sở dữ liệu
+db.connect(err => {
+    if (err) {
+        console.error('Could not connect to the database:', err);
+        process.exit(1);
+    }
+    console.log('Connected to the database');
+});
+
+// Endpoint để nhận dữ liệu từ form và lưu vào cơ sở dữ liệu
+app.post('/submit_order', (req, res) => {
+    const { quantity, name, phone, address } = req.body;
+
+    const query = 'INSERT INTO orders (quantity, name, phone, address) VALUES (?, ?, ?, ?)';
+    db.query(query, [quantity, name, phone, address], (err, result) => {
+        if (err) {
+            console.error('Error inserting data:', err);
+            res.status(500).json({ status: 'error', message: 'Failed to submit order' });
+        } else {
+            res.json({ status: 'success', message: 'Order submitted successfully' });
+        }
+    });
+});
+
+// Khởi động server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
