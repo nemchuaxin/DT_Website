@@ -1,6 +1,7 @@
 const express = require('express');
-const mysql = require('mysql2');  // Thay vì mysql
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Thêm import cors
 
 const app = express();
 const port = 3000;
@@ -8,6 +9,13 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Sử dụng middleware cors để cấu hình CORS
+app.use(cors({
+    origin: '*', // Cho phép mọi nguồn
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Cấu hình kết nối cơ sở dữ liệu
 const db = mysql.createConnection({

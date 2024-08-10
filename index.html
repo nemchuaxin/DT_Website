@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DT Group Website</title>
+    <title>Hoa Thanh Quế</title>
+    <link rel="icon" href="/image/web_logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="tab-bar">
-            <ul>
-                <li><a href="tel:0989989989" class="active">Hotline: 0989989989</a></li>
-                <li><a href="#">Tìm kiếm</a></li>
+            <ul class="tab-bar-left">
+                <li><a href="https://nemchuaxin.com/">Trang chủ</a></li>
+                <li><a href="tel:0334252369" class="active">Hotline: 0334252369</a></li>
+            </ul>
+            <img src="image/web_logo.png" alt="logo" class="tab-bar-logo">
+            <ul class="tab-bar-right">
+                <li><a href="revenue-form">Tính doanh thu</a></li>
+                <li><a href="#" id="intro-link">Giới thiệu</a></li>
             </ul>
         </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
-        </nav>
     </header>
+   
 
     <section class="banner">
-        <h1>DT Group Website</h1>
-        <p>Nem chua Thanh Hóa - Đặc sản xứ Thanh gây thương, để nhớ!</p>
+        <h1>NEM CHUA THANH HÓA</h1>
+        <p>Đặc sản xứ Thanh gây thương, để nhớ!</p>
+    </section>
+
+    <section>
+        <div>
+            <p class="products-title">CÁC SẢN PHẨM THƯƠNG HIỆU SPECDELI</p>
+        </div>
     </section>
 
     <section class="products">
@@ -45,15 +50,32 @@
             <img src="image/image03.jpg" alt="Product Image">
             <p class="caption">Nem đặc biệt</p>
         </div>
+
+        <div class="image-left">
+            <img src="image/image01.jpg" alt="Left Image">
+            <p class="caption">Nem dài</p>
+        </div>
+
+        <div class="image-mid">
+            <img src="image/image02.jpg" alt="Right Image">
+            <p class="caption">Nem ngắn</p>
+        </div>
+
+        <div class="image-right">
+            <img src="image/image03.jpg" alt="Product Image">
+            <p class="caption">Nem đặc biệt</p>
+        </div>
+
+        <div class="image-right">
+            <img src="image/image03.jpg" alt="Product Image">
+            <p class="caption">Nem đặc biệt</p>
+        </div>
+
     </section>
 
     <footer>
         <p>© 2024 DT Website. All rights reserved.</p>
-        <ul class="social-media">
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
+
     </footer>
 
     <!-- Modal Structure -->
@@ -67,7 +89,7 @@
             <!-- Form Đặt Hàng -->
             <form id="order-form">
                 <label for="quantity">Số lượng:</label>
-                <select id="quantity" name="quantity">
+                <select id="quantity" name="quantity" autocomplete="off">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
@@ -81,13 +103,13 @@
                 </select>
 
                 <label for="name">Tên của bạn:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required autocomplete="name">
 
                 <label for="phone">Số điện thoại:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel">
 
                 <label for="address">Địa chỉ giao hàng:</label>
-                <textarea id="address" name="address" rows="4" required></textarea>
+                <textarea id="address" name="address" rows="4" required autocomplete="street-address"></textarea>
 
                 <button type="submit" id="order-button">Gửi đơn hàng</button>
             </form>
@@ -96,15 +118,47 @@
     </div>
 
     <!-- Call Button -->
-    <div class="call-button">
-        <a href="tel:0989989989"><i class="fas fa-phone"></i></a>
+    <div class="call-button-container">
+        <div class="call-button">
+            <a href="tel:0334252369"><i class="fas fa-phone"></i></a>
+            <div class="ripple ripple1"></div>
+            <div class="ripple ripple2"></div>
+            <div class="ripple ripple3"></div>
+        </div>
+    </div>
+    
+    <div class="zalo-call-button-container">
+        <div class="zalo-call-button">
+            <a href="https://zalo.me/0334252369" target="_blank" class="zalo-call-link">
+                <i class="fas fa-phone"></i>
+            </a>
+            <div class="ripple ripple1"></div>
+            <div class="ripple ripple2"></div>
+            <div class="ripple ripple3"></div>
+        </div>
     </div>
 
-    <div class="zalo-call-button">
-        <a href="https://zalo.me/0989989989" target="_blank" class="zalo-call-link">
-            <i class="fas fa-phone"></i>
-        </a>
+    <div id="revenue-form-container" style="display: none;">
+        <h3>Tính Doanh Thu</h3>
+        <form id="revenue-form">
+            <label for="sales-amount">Tiền bán:</label>
+            <input type="number" id="sales-amount" name="sales-amount" required>
+            <button type="button" onclick="calculateRevenue()">Tính doanh thu</button>
+        </form>
+        <p id="revenue-result"></p>
     </div>
     <script src="scripts.js"></script>
+
+    <!-- Nội dung giới thiệu -->
+    <div id="intro-content" style="display: none;">
+        <section class="intro">
+            <h2>Giới thiệu về Nem Chua Thanh Hóa</h2>
+            <p>Nem Chua Thanh Hóa là một đặc sản truyền thống nổi tiếng của vùng Thanh Hóa...</p>
+        </section>
+    </div>
+    
+
+
+    
 </body>
 </html>

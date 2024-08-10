@@ -5,6 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const imageMid = document.querySelector('.image-mid img');
     const imageRight = document.querySelector('.image-right img');
     const orderForm = document.getElementById('order-form');
+    const introLink = document.getElementById('intro-link');
+    const introContent = document.getElementById('intro-content');
+    const banner = document.querySelector('section.banner');
+    const products = document.querySelector('section.products');
+    const revenueFormButton = document.getElementById('show-revenue-form');
+    const revenueFormContainer = document.getElementById('revenue-form-container');
+    const revenueForm = document.getElementById('revenue-form');
 
     // Hiển thị modal khi nhấp vào ảnh
     function openModal(description, price) {
@@ -23,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     imageMid.addEventListener('click', () => openModal('Nem ngắn: Đặc điểm nổi bật ...', 'Giá: 150.000 VNĐ'));
     imageRight.addEventListener('click', () => openModal('Nem đặc biệt: Đặc điểm nổi bật ...', 'Giá: 200.000 VNĐ'));
 
-    // Xử lý sự kiện khi nhấp vào nút đóng
+    // Xử lý sự kiện khi nhấp vào nút đóng của modal
     closeButton.addEventListener('click', closeModal);
 
     // Đóng modal khi nhấp ra ngoài modal
@@ -51,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
             address: address
         };
 
+        console.log('Sending order data:', orderData);
+
         fetch('http://localhost:3000/submit_order', {
             method: 'POST',
             headers: {
@@ -58,8 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(orderData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log('Server response:', data);
             if (data.status === 'success') {
                 alert(data.message);
                 document.getElementById('order-form').reset();
@@ -69,7 +84,44 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error('Fetch error:', error);
         });
+    });
+
+    // Hiển thị form tính doanh thu khi nhấp vào nút
+    revenueFormButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        revenueFormContainer.style.display = 'block';
+    });
+
+    // Tính doanh thu
+    function calculateRevenue() {
+        const salesAmount = parseFloat(document.getElementById('sales-amount').value);
+        if (!isNaN(salesAmount)) {
+            const revenue = salesAmount - 200000;
+            document.getElementById('revenue-result').textContent = `Doanh thu: ${revenue} VND`;
+        } else {
+            document.getElementById('revenue-result').textContent = 'Vui lòng nhập một số hợp lệ.';
+        }
+    }
+
+    // Xử lý việc tính doanh thu khi nhấp vào nút trong form doanh thu
+    revenueForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Ngăn chặn hành vi gửi form mặc định
+        calculateRevenue();
+    });
+
+    // Hiển thị phần giới thiệu khi nhấp vào liên kết
+    introLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log('Giới thiệu tab clicked');
+        
+        // Ẩn các phần khác của trang
+        banner.style.display = 'none';
+        products.style.display = 'none';
+        revenueFormContainer.style.display = 'none';
+        
+        // Hiển thị phần giới thiệu
+        introContent.style.display = 'block';
     });
 });

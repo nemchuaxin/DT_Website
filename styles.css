@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-    font-family: Montserrat, sans-serif;
+    font-family: Quicksand, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -13,16 +13,18 @@ a {
 }
 
 a:hover {
-    color: #007BFF;
-    text-decoration: underline;
+    color: #02101f;
 }
 
 /* Tab Bar Styles */
 .tab-bar {
+    font-size: 1.2em;
     background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
-    text-align: center;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
 }
 
 .tab-bar ul {
@@ -30,7 +32,10 @@ a:hover {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    align-items: center; /* Center items vertically within the ul */
+}
+.tab-bar ul :hover{
+    color: Black;
 }
 
 .tab-bar ul li {
@@ -38,83 +43,84 @@ a:hover {
 }
 
 .tab-bar ul li a {
-    color: #007BFF;
-    font-weight: bold;
+    color: #0000FF;
 }
 
-/* Navbar Styles */
-.navbar {
-    background-color: #007BFF;
-    padding: 10px 0;
-    text-align: center;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navbar ul li {
-    margin: 0 15px;
-}
-
-.navbar ul li a {
-    color: white;
-    font-weight: bold;
-}
-
-.navbar ul li a:hover {
-    text-decoration: underline;
+.tab-bar img {
+    width: 7%;
+    margin: 0 15px; /* Adjust margin if needed */
 }
 
 /* Banner Styles */
 .banner {
     background: url('image/banner.jpg') no-repeat center center/cover;
-    color: white;
+    color: Blue;
     text-align: center;
     padding: 100px 0;
+    margin-bottom: 50px;
 }
 
 .banner h1 {
-    font-size: 3em;
+    font-family: Poppins;
+    font-size: 3.2em;
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng văn bản: x-offset, y-offset, blur radius, color */
+    font-weight: bold; /* Làm chữ đậm hơn */
+    -webkit-text-stroke: 2px White; /* Viền văn bản: độ dày, màu */
 }
 
 .banner p {
-    font-size: 1.5em;
+    font-size: 1.33em;
 }
+
+.slogan {
+    text-align: center;
+    color: Blue;
+}
+
+.centered-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px; /* Optional: Add padding if needed */
+}
+
+.products-title {
+    font-size: 1.5em; /* Adjust font size as needed */
+    display: flex;
+    color: #0000FF;
+    justify-content: left;
+    margin: 0 72px; /* Remove default margin */
+}
+
 
 /* Products Section */
 .products {
+    margin-top: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 20px;
     text-align: center;
     flex-wrap: wrap;
 }
 
-.products .image-left, .products .image-mid, .products .image-right {
-    width: 22%;
-    margin: 15px;
+.products > div {
+    width: 25%; /* Mỗi phần tử chiếm khoảng 30% chiều rộng của hàng */
+    margin-bottom: 20px; /* Tạo khoảng cách giữa các hàng */
 }
 
 .products img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.caption {
-    margin-top: 10px;
-    font-style: italic;
-}
 
 /* Footer Styles */
 footer {
+    font-size: 1.1em;
     background-color: #f8f9fa;
     color: #333;
     text-align: center;
@@ -126,26 +132,6 @@ footer p {
     margin: 0;
 }
 
-footer .social-media {
-    list-style-type: none;
-    margin: 10px 0 0;
-    padding: 0;
-}
-
-footer .social-media li {
-    display: inline;
-    margin: 0 10px;
-}
-
-footer .social-media li a {
-    color: #007BFF;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-footer .social-media li a:hover {
-    color: #0056b3;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -211,7 +197,7 @@ footer .social-media li a:hover {
 #order-form select {
     width: auto;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1.2em;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
@@ -220,7 +206,7 @@ footer .social-media li a:hover {
     position: absolute;
     top: 10px;
     right: 25px;
-    font-size: 28px;
+    font-size: 1.2px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -264,10 +250,12 @@ form button:hover {
 }
 
 /* Call Button Styles */
-.call-button {
+.call-button-container, .zalo-call-button-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    z-index: 1000;
+}
+
+.call-button, .zalo-call-button {
     background-color: #007BFF;
     color: white;
     border-radius: 50%;
@@ -281,39 +269,121 @@ form button:hover {
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.call-button a {
+.call-button-container {
+    bottom: 20px;
+    right: 20px;
+}
+
+.zalo-call-button-container {
+    bottom: 100px;
+    right: 20px;
+}
+
+.call-button a, .zalo-call-button a {
     color: white;
     font-size: 24px;
 }
 
-.call-button:hover {
+.call-button:hover, .zalo-call-button:hover {
     background-color: #0056b3;
     transform: scale(1.1);
+    cursor: pointer;
 }
 
-.zalo-call-button {
-    position: fixed;
-    bottom: 100px;
-    right: 20px;
-    background-color: #007bff;
-    color: white;
+.ripple {
+    pointer-events: none;
+    position: absolute;
+    border: 2px solid rgba(0, 123, 255, 0.5);
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: ripple 2s infinite;
 }
 
-.zalo-call-button:hover {
-    background-color: #0056b3;
+.ripple1 {
+    animation-delay: 2s;
 }
+
+.ripple2 {
+    animation-delay: 3s;
+}
+
+.ripple3 {
+    animation-delay: 4s;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+
 
 .zalo-call-link {
-    color: white;
-    font-size: 24px;
-    text-align: center;
+    display: block;
+    position: relative;
+    width: 60px; /* Điều chỉnh kích thước theo ý bạn */
+    height: 60px; /* Điều chỉnh kích thước theo ý bạn */
+    background-image: url('image/zalo_logo.jpg'); /* Đường dẫn đến hình ảnh của bạn */
+    background-size: contain; /* Để hình ảnh nằm gọn trong nút */
+    background-repeat: no-repeat; /* Để hình ảnh không lặp lại */
+    background-position: center; /* Để hình ảnh căn giữa */
+    border-radius: 50%; /* Biến nút thành hình tròn */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    overflow: hidden; /* Đảm bảo hình ảnh không tràn ra ngoài nút */
+}
+
+.zalo-call-link i {
+    display: none; /* Ẩn biểu tượng điện thoại */
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+ul li a {
     text-decoration: none;
+    color: blue;
+}
+
+#revenue-form-container {
+    margin-top: 20px;
+}
+
+#revenue-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#revenue-form label, #revenue-form input, #revenue-form button {
+    margin-bottom: 10px;
+}
+
+#revenue-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+
+/* Hiển thị khi có class 'active' */
+.intro-content.active {
+    display: block;
 }
