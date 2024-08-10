@@ -87,7 +87,7 @@ a:hover {
 }
 
 .products-title {
-    font-size: 1.5em; /* Adjust font size as needed */
+    font-size: 1.3em; /* Adjust font size as needed */
     display: flex;
     color: #0000FF;
     justify-content: left;
@@ -103,6 +103,7 @@ a:hover {
     padding: 20px;
     text-align: center;
     flex-wrap: wrap;
+    font-size: 1.2em;
 }
 
 .products > div {
