@@ -61,7 +61,7 @@ a:hover {
 }
 
 .banner h1 {
-    font-family: Poppins;
+    font-family: Arial, sans-serif;
     font-size: 3.2em;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng văn bản: x-offset, y-offset, blur radius, color */
