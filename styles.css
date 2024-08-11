@@ -209,6 +209,7 @@ footer p {
     font-size: 1.2px;
     font-weight: bold;
     cursor: pointer;
+    color: black;
 }
 
 .close-button:hover {
