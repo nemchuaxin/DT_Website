@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const revenueFormButton = document.getElementById('show-revenue-form');
     const revenueFormContainer = document.getElementById('revenue-form-container');
     const revenueForm = document.getElementById('revenue-form');
+    const homeLink = document.getElementById('home-link');    
 
     // Hiển thị modal khi nhấp vào ảnh
     function openModal(description, price) {
@@ -24,6 +25,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeModal() {
         modal.style.display = 'none';
     }
+
+    //Click to comeback trang chu 
+    homeLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // Hiển thị lại các phần đã ẩn
+        banner.style.display = 'block';
+        products.style.display = 'block';
+        revenueFormContainer.style.display = 'none';
+        introContent.style.display = 'none';
+        
+        console.log('Trang chủ tab clicked');
+    });
 
     // Xử lý sự kiện khi nhấp vào ảnh
     imageLeft.addEventListener('click', () => openModal('Nem dài: Đặc điểm nổi bật ...', 'Giá: 100.000 VNĐ'));
