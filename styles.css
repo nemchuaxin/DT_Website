@@ -62,20 +62,16 @@ a:hover {
 
 .banner h1 {
     font-family: Arial, sans-serif;
-    font-size: 3.2em;
+    font-size: 3em;
     margin: 0;
+    color: #4B0082;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng văn bản: x-offset, y-offset, blur radius, color */
     font-weight: bold; /* Làm chữ đậm hơn */
-    -webkit-text-stroke: 2px White; /* Viền văn bản: độ dày, màu */
-}
-
-.banner p {
-    font-size: 1.33em;
+    -webkit-text-stroke: 1.8px White; /* Viền văn bản: độ dày, màu */
 }
 
 .slogan {
     text-align: center;
-    color: Blue;
 }
 
 .centered-section {
@@ -137,7 +133,11 @@ footer p {
 /* Responsive Design */
 @media (max-width: 768px) {
     .products .image-left, .products .image-right, .products .product {
-        width: 45%;
+        width: 100%;
+    }
+
+    .banner {
+        padding: 50px;
     }
 
     .tab-bar ul, .navbar ul {
@@ -155,12 +155,10 @@ footer p {
     }
 
     .banner h1 {
-        font-size: 2em;
-    }
-
-    .banner p {
         font-size: 1.2em;
     }
+
+
 }
 
 /* Modal Styles */
