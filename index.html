@@ -12,17 +12,16 @@
     <header>
         <div class="tab-bar">
             <ul class="tab-bar-left">
-                <li><a href="https://nemchuaxin.github.io/DT_Website/">Trang chủ</a></li>
+                <li><a href="#" id="home-link">Trang chủ</a></li>
                 <li><a href="tel:0988754958" class="active">Hotline: 0988754958</a></li>
             </ul>
             <img src="image/web_logo.png" alt="logo" class="tab-bar-logo">
             <ul class="tab-bar-right">
-                <li><a href="revenue-form">Tính doanh thu</a></li>
+                <li><a href="#" id="show-revenue-form">Tính doanh thu</a></li>
                 <li><a href="#" id="intro-link">Giới thiệu</a></li>
             </ul>
         </div>
     </header>
-   
 
     <section class="banner">
         <h1>NEM CHUA THANH HÓA</h1>
@@ -35,26 +34,22 @@
     </section>
 
     <section class="products">
-
-        
-        <div class="image-right">
-            <img src="image/nem_dai_01.jpg" alt="Product Image">
-            <p class="caption">Nem dài </p>
-            <p>20.000đ / chục</p>  
-        </div>
-        
         <div class="image-left">
-            <img src="image/nem_coi_01.jpg" alt="Left Image">
+            <img src="image/nem_coi_01.jpg" alt="Product Image">
             <p class="caption">Nem cối</p>
             <p>18.000đ / cái</p>
         </div>
 
-
         <div class="image-left">
-            <img src="image/nem_thinh_01.jpg" alt="Left Image">
+            <img src="image/nem_thinh_01.jpg" alt="Product Image">
             <p class="caption">Nem thính</p>
             <p>18.000đ / cái</p>
         </div>
+
+        <div class="image-right">
+            <img src="image/nem_dai_01.jpg" alt="Product Image">
+            <p class="caption">Nem dài</p>
+            <p>20.000đ / chục</p>
         </div>
 
         <div class="image-right">
@@ -80,12 +75,10 @@
             <p class="caption">Nem nướng</p>
             <p>18.000đ / cái</p>
         </div>
-
     </section>
 
     <footer>
         <p>© 2024 DT Website. All rights reserved.</p>
-
     </footer>
 
     <!-- Modal Structure -->
@@ -153,12 +146,11 @@
         <form id="revenue-form">
             <label for="sales-amount">Tiền bán:</label>
             <input type="number" id="sales-amount" name="sales-amount" required>
-            <button type="button" onclick="calculateRevenue()">Tính doanh thu</button>
+            <button type="submit">Tính doanh thu</button>
         </form>
         <p id="revenue-result"></p>
     </div>
-    <script src="scripts.js"></script>
-
+    
     <!-- Nội dung giới thiệu -->
     <div id="intro-content" style="display: none;">
         <section class="intro">
@@ -166,9 +158,7 @@
             <p>Nem Chua Thanh Hóa là một đặc sản truyền thống nổi tiếng của vùng Thanh Hóa...</p>
         </section>
     </div>
-    
 
-
-    
+    <script src="scripts.js"></script>
 </body>
 </html>
