@@ -156,6 +156,7 @@ footer p {
 
     .banner h1 {
         font-size: 1.2em;
+        -webkit-text-stroke: 1px White;
     }
 
 
